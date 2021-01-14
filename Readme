@@ -1,33 +1,69 @@
-PREPARACION ESCENARIO OSM-VNX
+# PASOS PARA LA EJECUCION DEL ESCENARIO
 
-PASOS DE INICIO:
+1. Clonar repositorio
 
-	1. Iniciar y enlazar vim-emu con OSM (si no ha sido arrancado)
+2. Comprobar los permisos de los scripts
 
-	2. Crear imagen Docker mediante fichero Dockerfile que se encuentra en el Directorio "vnf-img". Es la imagen que utilizan las VNFs en OSM.
+    2.1 Ejecutando ls -l en la terminal
+	~~~
+	ls -l
+	~~~
 
-		NOTA: El nombre que se le asigna al imagen debe ser: vnf-img
+    2.2 En caso de no tener permisos ejecutar lo siguiente
+	~~~
+	chmod 777 *name.sh* *name.sh*
+	~~~
 
-		Comando para crear imagen: "sudo docker build -t vnf-img ."
+3. Comprobar el estado de vimemu
 
-    	3. Ejecutar init.sh para crear los switches "externos" a OSM: AccessNet y ExtNet, construir las imagenes Docker, realizar el proceso de Onboarding de 	 	los paquetes VNF del escenario en OSM e instanciar los servicios para home1 y home2.
+    3.1 Ejecutar en la terminal
+	~~~
+	osm-check-vimemu
+	~~~
+    
+    3.2 Si vimemu no est enabled, ejecutar en la terminal:
+	~~~
+	osm-restart-vimemu
+	~~~
 
-    	4. Arrancar los escenarios VNX de la red de residencial (*home*) y del servidor (*server*)
+4. Ejecutar el script de inicializacion (Se abriran un total de 9 terminales)
+	~~~
+	./init.sh
+	~~~
 
-    	5. Ejecutar script "vcpe1.sh" para configurar y enlazar el servicio desplegado en OSM con los escenariois VNX
+5. Ejecutar el script que configura las VNFs de cada red residencial
+	~~~
+	./vcpe-1.sh
+	./vcpe-2.sh
+	~~~
 
-	7. Verificar en los Hosts de home1 (H11, H12) de VNX si han sido asignadas las direcciones IP en interfaz "Eth1" por el servidor DHCP.
+6. Asignar una direccin IP a cada host de cada red residencial y comprobar que se ha asignado correctamente. En hXX, root/xxxx 
+	~~~
+	ifconfig
+	dhclient
+	ifconfig
+	~~~
 
-	8. Si no poseen direcciones IP, ejecutar en cada Host el comando: dhclient
+7. Ejecutar el script de calidad de servicio en cada red residencial
+	~~~
+	./qos.sh vcpe-1
+	./qos.sh vcpe-2
+	~~~
 
-	9. Verificar conectividad entre Hosts (H11, H12) con el servidor (S1)
+8. Verificar conexiones entre hosts, calidad de servicio, conexion a Internet...
 
-    10. Instanciar, configurar y verificar para home2
+# PASOS PARA LA DESTRUCCION DEL ESCENARIO
+
+1. Ejecutar el script que para los VNX
+	~~~
+	./stop-vnx.sh
+	~~~
+
+2. Ejecutar el script de eliminacin de las instancias
+	~~~
+	./destroy.sh vcpe-1
+	./destroy.sh vcpe-2
+	~~~
 
 
-FINALIZAR ESCENARIO:
-
-    11. Ejecutar destroy.sh con parámetro el nombre de servicio que se quiere parar
-
-    12. Parar los escnarios VNX
 

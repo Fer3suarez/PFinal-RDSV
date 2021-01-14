@@ -18,7 +18,7 @@ fi
 
 VNF1="mn.dc1_$1-1-ubuntu-1"
 
-#sudo docker exec -it $VNF1 sed '/OFPFlowMod(/,/)/s/)/, table_id=1)/' usr/lib/python3/dist-packages/ryu/app/simple_switch_13.py > qos_simple_switch_13.py
+sudo docker exec -it $VNF1 bin/bash -c "sed '/OFPFlowMod(/,/)/s/)/, table_id=1)/' usr/lib/python3/dist-packages/ryu/app/simple_switch_13.py > qos_simple_switch_13.py"
 
 echo "--------------------------------------"
 echo "Arrancando ryu-manager en $1"
