@@ -25,10 +25,10 @@ echo "--------------------------------------"
 echo "       Eliminando la instancia"
 echo "--------------------------------------"
 osm ns-delete $1
-echo "-------------------------------------------------------------------"
-echo "Si hay mas instancias creadas, los siguientes pasos saldran un error"
-echo "-------------------------------------------------------------------"
-sleep 20
+echo "------------------------------------------------------------------------"
+echo "Si hay mas instancias creadas, en los siguientes pasos saldra un error"
+echo "------------------------------------------------------------------------"
+sleep 10
 echo "--------------------------------------"
 echo "       Eliminando el ns-vcpe.tar.gz"
 echo "--------------------------------------"

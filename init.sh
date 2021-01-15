@@ -60,3 +60,4 @@ echo "--------------------------------------"
 echo "     Levantando escenario server"
 echo "--------------------------------------"
 sudo vnx -f vnx/nfv3_server_lxc_ubuntu64.xml -t
+
