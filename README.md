@@ -1,5 +1,8 @@
 # PASOS PARA LA EJECUCION DEL ESCENARIO
 
+### Escenario del proyecto
+![Escenario final](https://github.com/Fer3suarez/PFinal-RDSV/blob/main/Escenario.png)
+
 1. Clonar repositorio
 
 2. Comprobar los permisos de los scripts
