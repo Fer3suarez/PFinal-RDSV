@@ -50,7 +50,7 @@ direcciones IP del prefijo 192.168.100.0/24.
 
 ## TAREAS A REALIZAR
 
-Utilización de contenedor VyOS como router residencial (vCPE)
+- Utilización de contenedor VyOS como router residencial (vCPE)
 - Conectividad IPv4 desde la red residencial hacia Internet. Uso de
 doble NAT: en vCPE y en r1
 - Sustituir el switch de vclass por un conmutador controlado por
