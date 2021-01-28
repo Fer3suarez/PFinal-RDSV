@@ -57,6 +57,9 @@ set service dhcp-server shared-network-name 'LAN1' subnet 192.168.255.0/24 stati
 set service dhcp-server shared-network-name 'LAN1' subnet 192.168.255.0/24 static-mapping DHCP-H21 mac-address 00:00:00:00:02:01
 set service dhcp-server shared-network-name 'LAN1' subnet 192.168.255.0/24 static-mapping DHCP-H22 ip-address 192.168.255.8
 set service dhcp-server shared-network-name 'LAN1' subnet 192.168.255.0/24 static-mapping DHCP-H22 mac-address 00:00:00:00:02:02
+set service dns forwarding cache-size '0'
+set service dns forwarding listen-address '$VCPEPRIVIP'
+set service dns forwarding allow-from '192.168.255.0/24'
 #Configuracion Nat en vCPE
 set nat source rule 100 outbound-interface eth2
 set nat source rule 100 source address '192.168.255.0/24'

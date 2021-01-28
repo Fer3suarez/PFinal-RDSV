@@ -24,7 +24,7 @@ RUN apt-get update \
     openvswitch-switch \
     iperf3 \
     vim \
-    ryu-bin \
+    python3-ryu \
     iproute2
 
 COPY dhcpd.conf /etc/dhcp/dhcpd.conf
